@@ -21,6 +21,11 @@ class GmtApplication : CommandLineRunner {
             user.username = "jesus"
             user.password = "1234"
             userService.new(user)
+
+            user.name = "Arian León Benitez"
+            user.username = "arian"
+            user.password = "1234"
+            userService.new(user)
         }
     }
 }

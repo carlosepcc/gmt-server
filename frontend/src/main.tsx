@@ -1,11 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
+import App from './App/App'
+import {SnackbarProvider} from "notistack";
+import {Provider} from 'react-redux'
+import Store from './App/store/Store'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={Store}>
+            <SnackbarProvider maxSnack={3}>
+                <App/>
+            </SnackbarProvider>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 )

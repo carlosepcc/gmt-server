@@ -15,9 +15,8 @@ class UserDetailsServiceImplementation : UserDetailsService {
     private lateinit var userService: UserService
 
     override fun loadUserByUsername(username: String?): UserDetails {
-        val user = username?.let { userService.getByUsername(it) }
-        val authorities: Set<SimpleGrantedAuthority> = mutableSetOf()
-        authorities.plus(SimpleGrantedAuthority(user!!.role.name))
+        val user = userService.getByUsername(username!!)
+        val authorities: Set<SimpleGrantedAuthority> = setOf(SimpleGrantedAuthority(user.role.name))
         return User(user.username, user.password, authorities)
     }
 }

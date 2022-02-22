@@ -1,5 +1,7 @@
 package com.server.gmt.user
 
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 import javax.persistence.*
 import com.server.gmt.helper.Entity as MyEntity
 
@@ -9,16 +11,22 @@ class User : MyEntity() {
 
     enum class Role { User }
 
-    @Column
+    @Column(nullable = false)
     var name: String = ""
 
-    @Column
+    @Column(nullable = false, unique = true)
     var username: String = ""
 
-    @Column
+    @Column(nullable = false)
     var password: String = ""
 
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var role: Role = Role.User
+}
+
+
+@Repository
+interface UserRepository : JpaRepository<User, Int> {
+    fun findByUsername(username: String): User
 }

@@ -21,7 +21,9 @@ class JWTRequestFilter : OncePerRequestFilter() {
     private lateinit var serviceJwt: JWTService
 
     override fun doFilterInternal(
-        request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        filterChain: FilterChain
     ) {
         val authorizationHeader: String? = request.getHeader("Authorization")
         var userName: String? = null
