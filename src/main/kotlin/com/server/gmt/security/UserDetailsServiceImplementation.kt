@@ -16,7 +16,7 @@ class UserDetailsServiceImplementation : UserDetailsService {
 
     override fun loadUserByUsername(username: String?): UserDetails {
         val user = userService.getByUsername(username!!)
-        val authorities: Set<SimpleGrantedAuthority> = setOf(SimpleGrantedAuthority(user.role.name))
+        val authorities: Set<SimpleGrantedAuthority> = setOf(SimpleGrantedAuthority(user.role?.name))
         return User(user.username, user.password, authorities)
     }
 }

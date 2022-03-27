@@ -14,19 +14,28 @@ class GmtApplication : CommandLineRunner {
     private lateinit var userService: UserService
 
     override fun run(vararg args: String?) {
-        if (userService.count() == 0) {
-            val user: User = User()
+        val list = mutableListOf<User>()
 
-            user.name = "Jesús F. Vázquez Biltre"
-            user.username = "jesus"
-            user.password = "1234"
-            userService.new(user)
+        val jesus = User()
+        jesus.name = "Jesús F. Vázquez Biltre"
+        jesus.username = "jesus"
+        jesus.password = "1234"
+        jesus.role = User.Role.User
+        list.add(jesus)
 
-            user.name = "Arian León Benitez"
-            user.username = "arian"
-            user.password = "1234"
-            userService.new(user)
+        val arian = User()
+        arian.name = "Arian León Benitez"
+        arian.username = "arian"
+        arian.password = "1234"
+        arian.role = User.Role.User
+        list.add(arian)
+
+        list.forEach {
+            if (!userService.exist(it)) {
+                userService.new(it)
+            }
         }
+
     }
 }
 
