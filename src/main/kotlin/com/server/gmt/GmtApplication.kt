@@ -30,6 +30,13 @@ class GmtApplication : CommandLineRunner {
         arian.role = User.Role.User
         list.add(arian)
 
+        val carlos = User()
+        carlos.name = "Carlos Enrique Piñeiro Cárdenas"
+        carlos.username = "carlos"
+        carlos.password = "1234"
+        carlos.role = User.Role.User
+        list.add(carlos)
+
         list.forEach {
             if (!userService.exist(it)) {
                 userService.new(it)
