@@ -36,8 +36,8 @@ class HandlerException {
     @ExceptionHandler(Exception::class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ResponseBody
-    fun exceptionUnespected(): ResponseException {
-        return ResponseException("Error inesperado", "unespected")
+    fun exceptionUnexpected(): ResponseException {
+        return ResponseException("Error inesperado", "unexpected")
     }
 
 }

@@ -10,5 +10,5 @@ import javax.persistence.MappedSuperclass
 open class Entity : Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Int? = null;
+    var id: Int? = null
 }
